@@ -20,7 +20,6 @@ const headerConfig = {
     { label: "Gallery", href: "/gallery" },
     { label: "Team", href: "/team" },
     { label: "Blog", href: "/blog" },
-    { label: "Projects", href: "/projects" },
     { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" }
   ]

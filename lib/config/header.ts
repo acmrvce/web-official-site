@@ -28,7 +28,6 @@ export const headerConfig: HeaderConfig = {
     { href: "/gallery", label: "Gallery" },
     { href: "/team", label: "Team" },
     { href: "/blog", label: "Blog" },
-    { href: "/projects", label: "Projects" },
     { href: "/about", label: "About" },
     { href: "/contact", label: "Contact" },
   ]

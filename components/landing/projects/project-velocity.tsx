@@ -84,12 +84,12 @@ const parseInternshipFromFilename = (filename: string) => {
 };
 
 const internshipFiles = [
-  "Aditya Bhandari - Microsoft.avif",
-  "Anirudh Kulkarni - Siemens, Teller, WIRIN, Samsung PRISM.avif",
+  "aditya bhandari - microsoft.avif",
+  "Anirudh Kulkarni - Siemens, Teller, WIRIN, Samsung prism.avif",
   "Aryan Chaturvedi - Skysecure.avif",
   "Aryan Rai - Scorpio Group.avif",
   "Ayush  - EY.avif",
-  "Kislay - CoinDCX.avif",
+  "kislay - CoinDCX.avif",
   "Mehar Kulkarni - Dell.avif",
   "Mihir Arya - SpikedAI.avif",
   "Pranav Jambur - IISC.avif",
@@ -160,7 +160,7 @@ const achievementFiles = [
   "Mohan Kartik & Pranav Jambur - HackEEE 4.0 - 1st Runner up.jpg",
   "Taha - FOSS FEST 2025 - 2nd Runner up.jpg",
   "Tallam Sai - CMRIT CTF - winner.jpeg",
-  "Tallam Sai - Exuberance - Runner Up.jpeg",
+  "tallam sai - Exuberance - runner up.jpeg",
   "Anirudh Kulkarni - Warpspeed - Winner.jpeg",
   "Yash Saraogi - Smart India Hackathon 2025 - Winner.jpg",
 ];
