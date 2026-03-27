@@ -70,13 +70,12 @@ const Footer = ({ className, config }: FooterProps) => {
               building the future.
             </p>
             <a
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/join"
               className="group relative inline-flex h-14 items-center justify-center overflow-hidden rounded-full bg-blue-600 dark:bg-white px-8 font-medium text-white dark:text-black transition-all hover:scale-105"
             >
               <span className="relative z-10 flex items-center gap-2">
-                Get Started{" "}
-                <Icons.ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                Become a Member{" "}
+                <Icons.ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </span>
             </a>
           </div>

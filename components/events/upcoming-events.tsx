@@ -238,6 +238,10 @@ const EventModal = ({ event, onClose }: { event: Event | null; onClose: () => vo
                                 <Ticket className="w-4 h-4" />
                                 Register Now
                             </a>
+                        ) : !event.date ? (
+                            <button disabled className="px-6 py-3 rounded-full bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 cursor-not-allowed text-sm font-bold border border-yellow-500/20 tracking-wide">
+                                Starting Soon
+                            </button>
                         ) : (
                             <button disabled className="px-6 py-3 rounded-full bg-neutral-200 dark:bg-white/10 text-neutral-500 cursor-not-allowed text-sm font-medium">
                                 Registration Closed

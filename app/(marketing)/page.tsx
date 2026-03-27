@@ -23,7 +23,7 @@ const Page = async () => {
       imageUrl: "/events/ctf.jpeg",
       category: "Competition",
       description: "Get ready for the ultimate Capture The Flag competition. Challenge your cybersecurity skills and win exciting prizes in this intense hackathon-style event!",
-      registrationLink: "#"
+      registrationLink: ""
     },
     {
       _id: "tech-tank-2",

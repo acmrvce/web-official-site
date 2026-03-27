@@ -172,10 +172,10 @@ export default function AboutStats() {
         >
           <div className="inline-flex flex-col sm:flex-row gap-4">
             <a
-              href="/projects"
-              className="group relative h-12 px-8 rounded-full bg-neutral-900 dark:bg-white text-white dark:text-black text-sm font-semibold flex items-center justify-center gap-2 overflow-hidden hover:scale-105 transition-transform shadow-lg shadow-neutral-900/20 dark:shadow-none"
+              href="/team"
+              className="group relative h-12 px-8 rounded-full bg-blue-600 dark:bg-white text-white dark:text-black text-sm font-semibold flex items-center justify-center gap-2 overflow-hidden hover:scale-105 transition-transform shadow-lg shadow-blue-600/20 dark:shadow-none"
             >
-              <span className="relative z-10">Explore Our Projects</span>
+              <span className="relative z-10">Meet the Team</span>
             </a>
 
             <a

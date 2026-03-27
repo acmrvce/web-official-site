@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Search, Mail } from "lucide-react";
 import { motion } from "framer-motion";
+import { useToast } from "@/components/ui/use-toast";
 
 interface EventHeaderProps {
   title: string;
@@ -20,11 +21,16 @@ export function EventHeader({
   onSearchChange,
 }: EventHeaderProps) {
   const [email, setEmail] = React.useState("");
+  const { toast } = useToast();
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Subscribing with:", email);
-    alert(`Subscribed with ${email}! (Placeholder)`);
+    
+    toast({
+      title: "Subscribed Successfully!",
+      description: `Updates will be sent to ${email}.`,
+    });
+
     setEmail("");
   };
 
