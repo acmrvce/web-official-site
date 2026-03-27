@@ -34,84 +34,7 @@ const FontStyles = () => (
   />
 );
 
-// --- Data: Internships (from public/internships folder) ---
-// Parse internship data from filenames
-// Format: "name - company.ext" or "name - company1, company2.ext"
-const parseInternshipFromFilename = (filename: string) => {
-  // Remove file extension
-  const nameWithoutExt = filename.replace(/\.(jpg|jpeg|png|webp|avif)$/i, "");
-
-  // Split by ' - ' to get parts
-  const parts = nameWithoutExt.split(" - ");
-
-  if (parts.length >= 2) {
-    const [namePart, companyPart] = parts;
-
-    // Capitalize name parts
-    const capitalizeName = (name: string) => {
-      return name
-        .split(" ")
-        .map(
-          (word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
-        )
-        .join(" ");
-    };
-
-    // Parse multiple companies separated by commas
-    const companies = companyPart
-      .split(",")
-      .map((c) => c.trim())
-      .filter((c) => c.length > 0);
-
-    return {
-      member: capitalizeName(namePart.trim()),
-      title: companies[0], // Primary company
-      companies: companies, // All companies
-      prize:
-        companies.length > 1 ? `${companies.length} Internships` : "Intern",
-      category: "Internship",
-    };
-  }
-
-  // Fallback if format doesn't match
-  return {
-    member: nameWithoutExt,
-    title: "Tech Company",
-    companies: ["Tech Company"],
-    prize: "Intern",
-    category: "Internship",
-  };
-};
-
-const internshipFiles = [
-  "aditya bhandari - microsoft.avif",
-  "Anirudh Kulkarni - Siemens, Teller, WIRIN, Samsung prism.avif",
-  "Aryan Chaturvedi - Skysecure.avif",
-  "Aryan Rai - Scorpio Group.avif",
-  "Ayush  - EY.avif",
-  "kislay - CoinDCX.avif",
-  "Mehar Kulkarni - Dell.avif",
-  "Mihir Arya - SpikedAI.avif",
-  "Pranav Jambur - IISC.avif",
-  "Priyanshu Deepak - Groww.avif",
-  "Smruthi S K - Deutche Bank.avif",
-  "Taha - IISC, Hidevs.avif",
-  "Tallam Sri Sai Subramanyam - Samsung PRISM.avif",
-  "Vishal K Bhat - Linkedin, Samsung PRISM.jpg",
-  "Yash Saraogi - Samsung PRISM.avif",
-];
-
-const internships = internshipFiles.map((filename, index) => {
-  const parsed = parseInternshipFromFilename(filename);
-  const companyList = parsed.companies.join(", ");
-  return {
-    id: index + 1,
-    ...parsed,
-    image: `/internships/${filename}`,
-    description: `${parsed.member} secured ${parsed.companies.length > 1 ? `${parsed.companies.length} prestigious internships` : "an internship"} at ${companyList}, showcasing exceptional skills and dedication in their field.`,
-  };
-});
-
+// --- Data: Internships (Removed) ---
 // --- Data: Achievements (from public/achievements folder) ---
 // Parse achievement data from filenames
 // Format: "name - event - position.ext" or "event - name - position.ext"
@@ -170,13 +93,13 @@ const achievements = achievementFiles.map((filename, index) => {
   return {
     id: index + 1,
     ...parsed,
-    image: `/achievements/${filename}`,
+    image: `/achievements/${encodeURIComponent(filename)}`,
     description: `Congratulations to ${parsed.member} for achieving ${parsed.prize} at ${parsed.title}! A remarkable achievement showcasing excellence and dedication.`,
   };
 });
 
 // --- Sub-Component: Achievement Card ---
-type AchievementItem = (typeof achievements)[0] | (typeof internships)[0];
+type AchievementItem = (typeof achievements)[0];
 const AchievementCard = ({
   item,
   onClick,
@@ -184,8 +107,6 @@ const AchievementCard = ({
   item: AchievementItem;
   onClick: () => void;
 }) => {
-  const hasMultipleCompanies = "companies" in item && item.companies.length > 1;
-
   return (
     <div
       onClick={onClick}
@@ -205,11 +126,6 @@ const AchievementCard = ({
         <span className="px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[10px] font-bold uppercase tracking-widest text-white">
           {item.category}
         </span>
-        {hasMultipleCompanies && (
-          <span className="px-3 py-1 rounded-full bg-purple-500/20 backdrop-blur-md border border-purple-400/30 text-[10px] font-bold uppercase tracking-widest text-purple-300">
-            {item.companies.length}×
-          </span>
-        )}
       </div>
 
       {/* Content */}
@@ -226,12 +142,6 @@ const AchievementCard = ({
         <p className="text-sm text-neutral-400 line-clamp-1">
           by {item.member}
         </p>
-        {hasMultipleCompanies && (
-          <p className="text-xs text-neutral-500 mt-1">
-            +{item.companies.length - 1} more{" "}
-            {item.companies.length - 1 === 1 ? "company" : "companies"}
-          </p>
-        )}
       </div>
 
       {/* Hover Reveal Icon */}
@@ -410,31 +320,10 @@ const AchievementModal = ({
               </div>
             </div>
 
-            {/* Multiple Companies Display for Internships */}
-            {"companies" in item && item.companies.length > 1 && (
-              <div>
-                <h4 className="text-lg font-bold text-neutral-900 dark:text-white mb-3">
-                  Companies ({item.companies.length})
-                </h4>
-                <div className="flex flex-wrap gap-2">
-                  {item.companies.map((company, idx) => (
-                    <span
-                      key={idx}
-                      className="px-3 py-1.5 rounded-lg bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-white text-sm font-medium border border-neutral-200 dark:border-neutral-700"
-                    >
-                      {company}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            )}
-
             {/* Description */}
             <div>
               <h4 className="text-lg font-bold text-neutral-900 dark:text-white mb-2">
-                {"companies" in item && item.companies.length > 1
-                  ? "About the Journey"
-                  : "About the Win"}
+                About the Win
               </h4>
               <p className="text-neutral-600 dark:text-neutral-300 leading-relaxed text-lg">
                 {item.description}
@@ -482,9 +371,9 @@ const ProjectVelocity = () => {
       </div>
 
       <div className="relative z-10 flex flex-col gap-10">
-        {/* First Row: Internships (placeholder data - to be updated) */}
+        {/* First Row: Achievements moving left */}
         <ParallaxText baseVelocity={-1.5}>
-          {internships.map((item) => (
+          {achievements.map((item) => (
             <AchievementCard
               key={`row1-${item.id}`}
               item={item}
@@ -493,7 +382,7 @@ const ProjectVelocity = () => {
           ))}
         </ParallaxText>
 
-        {/* Second Row: Real Achievements from public/achievements folder */}
+        {/* Second Row: Achievements moving right */}
         <ParallaxText baseVelocity={1.5}>
           {achievements.map((item) => (
             <AchievementCard

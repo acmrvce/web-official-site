@@ -7,7 +7,8 @@ import { ArrowUpRight, Sparkles, Code2, Rocket, Users } from "lucide-react";
 
 // --- Font Styles ---
 const FontStyles = () => (
-  <style dangerouslySetInnerHTML={{__html: `
+  <style dangerouslySetInnerHTML={{
+    __html: `
     @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600&display=swap');
     .font-primary { font-family: 'Manrope', sans-serif; }
     .font-tech { font-family: 'Space Grotesk', sans-serif; }
@@ -55,14 +56,14 @@ const workflowSteps = [
 ];
 
 // --- Sub-Component: The Panel ---
-const WorkflowPanel = ({ 
-  step, 
-  isActive, 
-  setActive 
-}: { 
-  step: typeof workflowSteps[0], 
-  isActive: boolean, 
-  setActive: () => void 
+const WorkflowPanel = ({
+  step,
+  isActive,
+  setActive
+}: {
+  step: typeof workflowSteps[0],
+  isActive: boolean,
+  setActive: () => void
 }) => {
   return (
     <div
@@ -74,10 +75,10 @@ const WorkflowPanel = ({
         // - Height is always full (stretches to container)
         // - Flex grows based on active state
         "lg:h-full",
-        isActive 
-          ? "lg:flex-[3.5] lg:opacity-100" 
+        isActive
+          ? "lg:flex-[3.5] lg:opacity-100"
           : "lg:flex-[1] lg:opacity-60 hover:lg:opacity-100",
-        
+
         // Mobile Styles (Default):
         // - Height animates between small/large
         // - Width is full
@@ -87,10 +88,10 @@ const WorkflowPanel = ({
       )}
     >
       {/* Background Image */}
-      <div 
+      <div
         className={cn(
           "absolute inset-0 w-full h-full transition-all duration-700",
-          isActive ? "opacity-100 scale-100" : "opacity-0 lg:opacity-40 scale-110" 
+          isActive ? "opacity-100 scale-100" : "opacity-0 lg:opacity-40 scale-110"
         )}
       >
         <img
@@ -103,13 +104,13 @@ const WorkflowPanel = ({
 
       {/* Content Container */}
       <div className="absolute inset-0 flex flex-col justify-end p-6 lg:p-10 z-20">
-        
+
         {/* Top Number Badge */}
-        <div 
+        <div
           className={cn(
             "absolute w-10 h-10 lg:w-14 lg:h-14 rounded-full flex items-center justify-center font-tech font-bold border backdrop-blur-md z-30 transition-all duration-500",
-            isActive 
-              ? "bg-white text-black border-white top-6 left-6 lg:top-10 lg:left-10" 
+            isActive
+              ? "bg-white text-black border-white top-6 left-6 lg:top-10 lg:left-10"
               : "bg-neutral-200 dark:bg-white/10 text-neutral-900 dark:text-white border-neutral-300 dark:border-white/20 top-1/2 -translate-y-1/2 left-6 lg:top-10 lg:translate-y-0 lg:left-10"
           )}
         >
@@ -118,19 +119,19 @@ const WorkflowPanel = ({
 
         {/* Text Content */}
         <div className="relative z-10 overflow-hidden pl-2 lg:pl-0">
-          
+
           {/* Title - Always Visible but transforms */}
-          <div 
+          <div
             className={cn(
-                "transition-transform duration-500 ease-in-out origin-left",
-                !isActive && "translate-x-12 lg:translate-x-0" 
+              "transition-transform duration-500 ease-in-out origin-left",
+              !isActive && "translate-x-12 lg:translate-x-0"
             )}
           >
-             {!isActive && (
-                <h3 className="text-xl lg:text-2xl font-bold text-neutral-900 dark:text-white/80 whitespace-nowrap lg:-rotate-90 lg:origin-bottom-left lg:translate-x-8 lg:-translate-y-8 transition-opacity duration-300">
-                    {step.title}
-                </h3>
-             )}
+            {!isActive && (
+              <h3 className="text-xl lg:text-2xl font-bold text-neutral-900 dark:text-white/80 whitespace-nowrap lg:-rotate-90 lg:origin-bottom-left lg:translate-x-8 lg:-translate-y-8 transition-opacity duration-300">
+                {step.title}
+              </h3>
+            )}
           </div>
 
           {/* Active Content Reveal - Using Framer for opacity/y-slide only */}
@@ -144,15 +145,15 @@ const WorkflowPanel = ({
                 className="flex flex-col gap-3 lg:gap-4"
               >
                 <div className="flex items-center gap-3">
-                    <span className={cn("px-3 py-1 rounded-full text-[10px] lg:text-xs font-bold uppercase tracking-widest text-white w-fit", step.color)}>
-                        {step.subtitle}
-                    </span>
+                  <span className={cn("px-3 py-1 rounded-full text-[10px] lg:text-xs font-bold uppercase tracking-widest text-white w-fit", step.color)}>
+                    {step.subtitle}
+                  </span>
                 </div>
-                
+
                 <h3 className="font-bold text-white text-3xl lg:text-5xl leading-tight">
                   {step.title}
                 </h3>
-                
+
                 <p className="text-sm lg:text-lg text-neutral-300 max-w-lg leading-relaxed line-clamp-3 lg:line-clamp-none">
                   {step.description}
                 </p>
@@ -162,12 +163,12 @@ const WorkflowPanel = ({
         </div>
 
         {/* Action Icon */}
-        <div 
+        <div
           className={cn(
             "absolute right-6 top-1/2 -translate-y-1/2 lg:top-10 lg:translate-y-0 lg:right-10 p-3 rounded-full border border-white/20 bg-white/10 backdrop-blur-md text-white transition-all duration-500 z-30",
-            isActive 
-                ? "bg-white text-black border-white rotate-45 top-6 translate-y-0 opacity-100" 
-                : "opacity-0 lg:opacity-100 rotate-0"
+            isActive
+              ? "bg-white text-black border-white rotate-45 top-6 translate-y-0 opacity-100"
+              : "opacity-0 lg:opacity-100 rotate-0"
           )}
         >
           <ArrowUpRight className="w-5 h-5" />
@@ -185,9 +186,9 @@ const ExpandableWorkflow = () => {
   return (
     <section className="w-full bg-white dark:bg-[#050505] py-24 px-4 lg:px-12 font-primary overflow-hidden border-t border-neutral-200 dark:border-white/10">
       <FontStyles />
-      
+
       <div className="max-w-[1600px] mx-auto">
-        
+
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 px-2">
           <div>
@@ -198,7 +199,7 @@ const ExpandableWorkflow = () => {
               </span>
             </div>
             <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-neutral-900 dark:text-white leading-[0.9]">
-              How We <br/>
+              How We <br />
               <span className="text-neutral-400 dark:text-neutral-600">Innovate.</span>
             </h2>
           </div>
@@ -210,11 +211,11 @@ const ExpandableWorkflow = () => {
         {/* On desktop, we force a specific height so h-full works on children */}
         <div className="flex flex-col lg:flex-row gap-3 w-full lg:h-[600px]">
           {workflowSteps.map((step) => (
-            <WorkflowPanel 
-              key={step.id} 
-              step={step} 
-              isActive={activeId === step.id} 
-              setActive={() => setActiveId(step.id)} 
+            <WorkflowPanel
+              key={step.id}
+              step={step}
+              isActive={activeId === step.id}
+              setActive={() => setActiveId(step.id)}
             />
           ))}
         </div>

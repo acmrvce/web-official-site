@@ -44,16 +44,16 @@ export default function Custom404Page() {
         {/* Hero Typography */}
         <div className="text-center space-y-6 mb-16 max-w-3xl mx-auto">
           <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter font-primary">
-            <span className="text-transparent bg-clip-text bg-gradient-to-b from-foreground to-foreground/50">
-              Membership
+            <span className="text-transparent bg-clip-text bg-gradient-to-b from-foregrouncheckd to-foreground/50">
+              Recruitment
             </span>
             <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary/80 to-primary/50 italic pr-4">
-              Initiating...
+              Closed
             </span>
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed font-light">
-            We are engineering a seamless registration experience. The RVCE ACM chapter portal is currently undergoing final calibrations before deployment.
+            Recruitment is not ongoing right now. Stay tuned on the site for upcoming updates!
           </p>
         </div>
 

@@ -139,30 +139,33 @@ const globalBenefits = [
   "Student Research Competition eligibility",
 ];
 
-const steps = [
+const pathways = [
   {
-    number: "01",
-    title: "Join ACM Global",
+    title: "Written Test",
+    target: "1st & 2nd Year Students",
     description:
-      "Sign up for an ACM Student Membership on the official ACM website. The student membership costs $19/year and unlocks global benefits.",
-    cta: "Visit ACM.org",
+      "Register on our platform and take the technical written test to showcase your aptitude and problem-solving skills.",
+    steps: ["Register on Site", "Take Written Test", "Interview Round", "Join ACM RVCE"],
+    cta: "Register for Test",
+    link: "/404",
+  },
+  {
+    title: "Resume Application",
+    target: "Project Experienced",
+    description:
+      "Got a strong project portfolio? Skip the written test by submitting a detailed resume highlighting your best technical work.",
+    steps: ["Submit Resume", "Profile Evaluation", "Interview Round", "Join ACM RVCE"],
+    cta: "Submit Resume",
+    link: "/404",
+  },
+  {
+    title: "Global Membership",
+    target: "ACM Global Members",
+    description:
+      "Already have an official ACM Global Student Membership ($19/yr)? Enjoy a direct track to the interview shortlisting phase.",
+    steps: ["Purchase Membership", "Verification", "Interview Round", "Join ACM RVCE"],
+    cta: "Get Global Membership",
     link: "https://www.acm.org/membership/join",
-  },
-  {
-    number: "02",
-    title: "Register at RVCE Chapter",
-    description:
-      "Fill out the ACM RVCE Student Chapter registration form with your ACM membership ID and college details.",
-    cta: "Registration Form",
-    link: "https://forms.gle/acmrvce",
-  },
-  {
-    number: "03",
-    title: "Get Onboarded",
-    description:
-      "Once verified, you'll be added to the chapter's official channels, receive your welcome kit, and gain access to all events and resources.",
-    cta: null,
-    link: null,
   },
 ];
 
@@ -378,7 +381,7 @@ export default function MembershipPage() {
         </div>
       </section>
 
-      {/* ═══════════ HOW TO JOIN (PROCESS) ═══════════ */}
+      {/* ═══════════ PATHWAYS TO JOIN ═══════════ */}
       <section
         id="process"
         className="relative w-full bg-neutral-50 dark:bg-[#0A0A0A] py-20 md:py-28 overflow-hidden border-t border-neutral-200 dark:border-white/10"
@@ -394,48 +397,60 @@ export default function MembershipPage() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-4">
-              How to <span className="text-blue-600">Join</span>
+              Pathways to <span className="text-blue-600">Join</span>
             </h2>
-            <p className="text-neutral-600 dark:text-neutral-400 max-w-xl mx-auto">
-              Getting started is simple. Follow these three steps to become a
-              full member of ACM RVCE.
+            <p className="text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
+              Choose the path that best fits your profile. Whether you're a beginner wanting to take our aptitude test, an experienced developer with a resume, or an ACM Global member, there's a place for you.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {steps.map((step, idx) => (
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {pathways.map((pathway, idx) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: idx * 0.15 }}
+                className="h-full"
               >
-                <SpotlightCard className="p-8 h-full flex flex-col">
-                  <span className="text-5xl font-bold font-tech text-blue-600/20 dark:text-blue-400/15 mb-4 block">
-                    {step.number}
-                  </span>
-                  <h3 className="text-xl font-bold mb-3">{step.title}</h3>
-                  <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed flex-1">
-                    {step.description}
-                  </p>
-                  {step.cta && step.link && (
-                    <a
-                      href={step.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-blue-600 dark:text-blue-400 hover:gap-3 transition-all"
-                    >
-                      {step.cta}
-                      <ChevronRight className="w-4 h-4" />
-                    </a>
-                  )}
-                  {!step.cta && (
-                    <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-emerald-600 dark:text-emerald-400">
-                      <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                      You're all set!
-                    </div>
-                  )}
+                <SpotlightCard className="p-8 h-full flex flex-col justify-between">
+                  <div>
+                    <span className="inline-block px-3 py-1 rounded-full bg-blue-600/10 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 text-[10px] font-bold uppercase tracking-widest mb-4">
+                      {pathway.target}
+                    </span>
+                    <h3 className="text-2xl font-bold mb-3">{pathway.title}</h3>
+                    <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                      {pathway.description}
+                    </p>
+                  </div>
+                  
+                  <div className="mt-8 pt-6 border-t border-neutral-200 dark:border-white/10">
+                    <ul className="space-y-4 mb-8">
+                      {pathway.steps.map((step, stepIdx) => (
+                        <li key={stepIdx} className="flex items-center gap-3">
+                          <div className="shrink-0 flex items-center justify-center w-5 h-5 rounded-full bg-blue-100 dark:bg-white/10 text-blue-800 dark:text-neutral-300 text-[10px] font-bold">
+                            {stepIdx + 1}
+                          </div>
+                          <span className="text-sm font-medium text-neutral-800 dark:text-neutral-200">
+                            {step}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                    
+                    {pathway.cta && pathway.link && (
+                      <a
+                        href={pathway.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex w-full h-12 items-center justify-center gap-2 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-all shadow-md mt-auto"
+                      >
+                        {pathway.cta}
+                        <ArrowUpRight className="w-4 h-4" />
+                      </a>
+                    )}
+                  </div>
                 </SpotlightCard>
               </motion.div>
             ))}

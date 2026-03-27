@@ -111,7 +111,7 @@ const HeroSection = ({ title, subtitle, callToAction, backgroundImage }: HeroSec
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                 </span>
                 <span className="text-xs font-tech font-medium tracking-widest uppercase text-neutral-600 dark:text-neutral-300">
-                    Accepting New Members
+                    Accepting ACM Global Members
                 </span>
             </motion.div>
 
