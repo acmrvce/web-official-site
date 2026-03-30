@@ -14,7 +14,7 @@ import { createPortal } from "react-dom";
 const headerConfig = {
   brand: {
     title: "ACM RVCE",
-    logo: "/logos/acm_white_logo.jpg", 
+    logo: "/logos/ACM_RVCE.png", 
   },
   navigationLinks: [
     { label: "Home", href: "/" },
@@ -426,11 +426,11 @@ export function Header() {
         >
           {/* Logo */}
           <TransitionLink href="/" className="flex items-center gap-3 group">
-              <div className="relative flex h-10 w-10 items-center justify-center rounded-full bg-white p-1.5 shadow-sm overflow-hidden">
+              <div className="relative flex h-10 w-10 items-center justify-center">
                  <img 
                    src={headerConfig.brand.logo} 
                    alt={headerConfig.brand.title} 
-                   className="h-full w-full object-contain"
+                   className="h-full w-full object-contain dark:brightness-200"
                  />
               </div>
              <span className={cn(
