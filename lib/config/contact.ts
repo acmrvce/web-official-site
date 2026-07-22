@@ -132,14 +132,14 @@ export const contactConfig: ContactConfig = {
       {
         icon: "Phone",
         label: "Chair Contact",
-        value: "+91 82170 40275",
-        link: "tel:+918217040275",
+        value: "+91 88614 92072",
+        link: "tel:+918861492072",
       },
       {
         icon: "Phone",
         label: "Vice Chair Contact",
-        value: "+91 96112 47230",
-        link: "tel:+919611247230",
+        value: "+91 91139 06099",
+        link: "tel:+919113906099",
       },
     ],
   },
