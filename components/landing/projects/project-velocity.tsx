@@ -86,6 +86,7 @@ const achievementFiles = [
   "tallam sai - Exuberance - runner up.jpeg",
   "Anirudh Kulkarni - Warpspeed - Winner.jpeg",
   "Yash Saraogi - Smart India Hackathon 2025 - Winner.jpg",
+  "Team Dhi (AIML dept) - Neurocore hackathon - Winner.jpeg",
 ];
 
 const achievements = achievementFiles.map((filename, index) => {
